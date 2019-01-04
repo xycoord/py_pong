@@ -1,28 +1,20 @@
 from tkinter import *
+from Ball import *
 
-class Ball:
-    def __init__(self, canvas, x1, y1, x2, y2):
-        self.x1 = x1
-        self.y1 = y1
-        self.x2 = x2
-        self.y2 = y2
-        self.canvas = canvas
-        self.ball = canvas.create_oval(self.x1, self.y1, self.x2, self.y2)
+canvas_width = 300
+canvas_height = 300
 
-    def animate_ball(self):
-        delta_x = 3
-        delta_y = 3
-        self.canvas.move(self.ball, delta_x, delta_y)
-        self.canvas.after(50, self.animate_ball)
-
-# initialize root Window and canvas
 root = Tk()
-root.title("Balls")
-root.resizable(False,False)
-canvas = Canvas(root, width = 300, height = 300)
+root.title("Balls!")
+root.resizable(False, False)
+canvas = Canvas(root, width = canvas_width, height = canvas_height)
 canvas.pack()
 
-ball = Ball(canvas, 10, 10, 30, 30)
-ball.animate_ball()
+ball = Ball(canvas, canvas_width, canvas_height, x=20, y=20, radius=10)
+
+def initiate_game_loop():
+    ball.update()
+    canvas.after(10, initiate_game_loop)
+initiate_game_loop()
 
 root.mainloop()
