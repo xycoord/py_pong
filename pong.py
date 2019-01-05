@@ -1,7 +1,7 @@
 from tkinter import *
 from Ball import *
 
-canvas_width = 300
+canvas_width = 600
 canvas_height = 300
 
 root = Tk()

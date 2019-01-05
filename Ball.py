@@ -11,5 +11,7 @@ class Ball:
         left, top, right, bottom = self.canvas.coords(self.ball)
 
         #write collision detection here by setting the velocites
+        if right > self.canvas_width or left < 0: self.velx = self.velx - 2*self.velx
+        if top > self.canvas_height or bottom < 0: self.vely = self.vely - 2*self.vely
 
         self.canvas.move(self.ball, self.velx, self.vely)
